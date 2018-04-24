@@ -12,11 +12,14 @@ var isLoggedIn = require('./middleware/isLoggedIn');
 //Connect to the database
 mongoose.connect('mongodb://localhost/authboiler');
 
+app.use(express.static('public'))
+
 //set and use statements
 app.set('view engine', 'ejs');
 //middleware
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(expressLayouts);
+
 
 app.use(session({
 	secret: process.env.SESSION_SECRET,
