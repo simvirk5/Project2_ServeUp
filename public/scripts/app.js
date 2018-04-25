@@ -1,15 +1,43 @@
-console.log("Sanity Check: JS is working!");
-var map;
-function initMap(){
-  // Map options
-	var center = {
-	    zoom:7,
-	    center:{lat: 47.751076, lng: -120.740135}
-	}
-  // New map
-	var map = new google.maps.Map(document.getElementById('map'),center);
+//create map and search box
+// var map;
+// function initMap(){
+//   // Map options
+// 	var center = {
+// 	    zoom:7,
+// 	    center:{lat: 47.751076, lng: -120.740135}
+// 	}
+//   // New map
+// 	var map = new google.maps.Map(document.getElementById('map'),center);
 
-	for(var i=0; i<foodBank.length;i++){
+// 	for(var i=0; i<foodBank.length;i++){
+// 		var marker = new google.maps.Marker({
+// 	      position: foodBank[i].coords,
+// 	      map: map
+// 	    });
+// 	  	addContent(marker, foodBank[i].name);
+// 	}
+// 	//function outside of loop
+// 	function addContent(marker, data) {
+// 	  var infowindow = new google.maps.InfoWindow({
+// 	    content: data
+// 	  });
+// 	//all event listeners
+// 	  marker.addListener('click', function() {
+// 	    infowindow.open(marker.get('map'), marker);
+// 	    map.setZoom(8);
+// 		map.setCenter(marker.getPosition());
+// 	  });
+// 	}
+// }
+
+ function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 47.751076, lng: -120.740135},
+          zoom: 7,
+          // mapTypeId: 'roadmap'
+        });
+
+        for(var i=0; i<foodBank.length;i++){
 		var marker = new google.maps.Marker({
 	      position: foodBank[i].coords,
 	      map: map
@@ -24,13 +52,48 @@ function initMap(){
 	//all event listeners
 	  marker.addListener('click', function() {
 	    infowindow.open(marker.get('map'), marker);
-	    map.setZoom(8);
+	    map.setZoom(2);
 		map.setCenter(marker.getPosition());
 	  });
 	}
-}
 
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Wrong entry. Try something different.");
+              return;
+            }
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
 
 
 
