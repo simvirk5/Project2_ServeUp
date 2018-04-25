@@ -1,2 +1,14 @@
 <!-- <h1>PROFILE PAGE!</h1>
  --><h2> Hello, Welcome back <%= currentUser.name %>!</h2>
+
+   <div>
+    <form method="POST" action='/post' id= "newAlbum">
+      <label for ="Food Description">Description</label>
+      <input type ="text" name="Description" placeholder="Food Description">
+      <label for ="Food Quantity">Food Quantity</label>
+      <input type ="text" name="Quanity" placeholder="Enter Quanity">
+      <button type="submit" class="btn btn-primary">Add Food Item<button>
+    </form>
+  </div>
+
+<div id="foodDiv"></div>

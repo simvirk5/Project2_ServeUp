@@ -15,6 +15,7 @@ var userSchema = new mongoose.Schema({
 	}
 });
 
+ 
 
 //Make a function that checks whether a password is correct
 userSchema.methods.isAuthenticated = function(password) {

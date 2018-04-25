@@ -1,3 +1,4 @@
+console.log("Sanity Check: JS is working!");
 var map;
 function initMap(){
   // Map options
@@ -9,26 +10,22 @@ function initMap(){
 	var map = new google.maps.Map(document.getElementById('map'),center);
 
 	for(var i=0; i<foodBank.length;i++){
-		console.log(foodBank[i])
 		var marker = new google.maps.Marker({
 	      position: foodBank[i].coords,
 	      map: map
 	    });
-
-	  	attachSecretMessage(marker, foodBank[i].content);
-
-
+	  	addContent(marker, foodBank[i].name);
 	}
-
-	function attachSecretMessage(marker, secretMessage) {
+	//function outside of loop
+	function addContent(marker, data) {
 	  var infowindow = new google.maps.InfoWindow({
-	    content: secretMessage
+	    content: data
 	  });
-
+	//all event listeners
 	  marker.addListener('click', function() {
 	    infowindow.open(marker.get('map'), marker);
 	    map.setZoom(8);
-		    map.setCenter(marker.getPosition());
+		map.setCenter(marker.getPosition());
 	  });
 	}
 }

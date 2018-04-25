@@ -9,6 +9,7 @@ var passport = require('./config/passportConfig');
 var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
+var db = require('./models/post');
 //Connect to the database
 mongoose.connect('mongodb://localhost/authboiler');
 
@@ -19,8 +20,6 @@ app.set('view engine', 'ejs');
 //middleware
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(expressLayouts);
-
-
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,
@@ -54,6 +53,15 @@ app.get('/profile', isLoggedIn, function(req, res) {
 app.get('/map', function(req, res) {
 	res.render('map');
 })
+
+// create new post
+app.post('/profile', function(req, res) {
+  var newPost = new db.create({type: req.body.type, quantity: req.body.quantity});
+  newPost.save();
+  res.json(newPost);
+  // post.push(req.body);
+  res.redirect('/profile');
+});
 
 //Include any routes from controllers
 app.use('/auth', require('./controllers/auth'));
