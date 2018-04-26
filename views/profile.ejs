@@ -1,10 +1,12 @@
 <h1>Profile Page</h1>
 <% foodItems.forEach(function(foodItem) {%>
 	<div style="background-color: pink; margin-bottom: 20px">
+		<% if(foodItem.checkedItems) {%>
 		<p><%= foodItem.createdAt.toDateString()%> </p>
 		<% foodItem.checkedItems.forEach(function(checkItem) { %>
 			<p> <%=checkItem %> </p>
 		<% }) %>
+		<%}%>
 			<p><%= foodItem.postItems[0]%> </p>
 			<a href="/profile/<%= foodItem._id %>/update" class="btn btn-danger">Edit</a>
 	</div>
