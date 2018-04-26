@@ -95,106 +95,68 @@
         });
 }
 
-///////////////////////////////////////////////////////
-var $postList;
-var allPosts = [];
 
-$(document).ready(function(){
+/////////click checkboxes
+$('.form-check-input').on('click', function(e) {
+	console.log('clicked');
+	console.log(e.target)
+})
 
-  $postList = $('#foodDiv');
-  $.ajax({
-    method: 'GET',
-    url: '/api/posts',
-    success: handleSuccess,
-    error: handleError
-  });
 
-  $('#newBookForm').on('submit', function(e) {
-    e.preventDefault();
-    $.ajax({
-      method: 'POST',
-      url: '/api/books',
-      data: $(this).serialize(),
-      success: newBookSuccess,
-      error: newBookError
-    });
-  });
+$( document ).ready(function() {
+	
+	$('#add-food-posts').on('submit', function(e) {
+		e.preventDefault();
+		let foodItems = [];
+		let postItems = $('#add-food-posts input[type=text]').val();
+		$('#add-food-posts input[type=checkbox]').each(function() {
+			console.log(this.value);
+			if(this.checked) {
+				foodItems.push(this.value)
+			}
+		})
+		console.log(foodItems)
+		console.log(postItems)
+		let myData = {
+			foodItems: foodItems,
+			postItems: postItems
+		}
+		//control how we send the data to the backend
+		$.ajax({
+			method: 'POST',
+			url: '/post',
+			data: myData
+		}).done(function(data) {
+			window.location.href="/profile"
+		});
+	});
 
-  $postList.on('click', '.deleteBtn', function() {
-    console.log('clicked delete button to', '/api/books/'+$(this).attr('data-id'));
-    $.ajax({
-      method: 'DELETE',
-      url: '/api/books/'+$(this).attr('data-id'),
-      success: deleteBookSuccess,
-      error: deleteBookError
-    });
-  });
-
+	$('#update-food-posts').on('update', function(e) {
+		e.preventDefault();
+		let foodItems = [];
+		let postItems = $('#update-food-posts input[type=text]').val();
+		$('#update-food-posts input[type=checkbox]').each(function() {
+			console.log(this.value);
+			if(this.checked) {
+				foodItems.push(this.value)
+			}
+		})
+		console.log(foodItems)
+		console.log(postItems)
+		let myData = {
+			foodItems: foodItems,
+			postItems: postItems
+		}
+		//control how we send the data to the backend
+		$.ajax({
+			method: 'PUT',
+			url: '/update',
+			data: myData
+		}).done(function(data) {
+			window.location.href="/profile"
+		});
+	});
 });
 
-function getBookHtml(book) {
-  return `<hr>
-          <p>
-            <b>${book.title}</b>
-            by ${book.author}
-            <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${book._id}>Delete</button>
-          </p>`;
-}
-
-function getAllBooksHtml(books) {
-  return books.map(getBookHtml).join("");
-}
-
-// helper function to render all posts to view
-// note: we empty and re-render the collection each time our post data changes
-function render () {
-  // empty existing posts from view
-  $postList.empty();
-
-  // pass `allBooks` into the template function
-  var booksHtml = getAllBooksHtml(allBooks);
-
-  // append html to the view
-  $postList.append(booksHtml);
-};
-
-function handleSuccess(json) {
-  allBooks = json;
-  render();
-}
-
-function handleError(e) {
-  console.log('uh oh');
-  $('#bookTarget').text('Failed to load books, is the server working?');
-}
-
-function newBookSuccess(json) {
-  $('#newBookForm input').val('');
-  allBooks.push(json);
-  render();
-}
-
-function newBookError() {
-  console.log('newbook error!');
-}
-
-function deleteBookSuccess(json) {
-  var book = json;
-  console.log(json);
-  var bookId = book._id;
-  console.log('delete book', bookId);
-  // find the book with the correct ID and remove it from our allBooks array
-  for(var index = 0; index < allBooks.length; index++) {
-    if(allBooks[index]._id === bookId) {
-      allBooks.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
-    }
-  }
-  render();
-}
-
-function deleteBookError() {
-  console.log('deletebook error!');
-}
 
 

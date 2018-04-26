@@ -9,14 +9,13 @@ var userSchema = new mongoose.Schema({
 		required: true, 
 		unique: true
 	},
+	
 	password: {
 		type: String,
 		required: true
 	}
-});
 
- 
-
+	});
 //Make a function that checks whether a password is correct
 userSchema.methods.isAuthenticated = function(password) {
 	//compare typedinpassword(what user is typing in) versus actual password
@@ -41,12 +40,4 @@ userSchema.pre('save', function(next) {
 	}
 });
 
-//export the model
-
-//mongoose.model(name, schema, forceName)
-	//1.name: will lowercase and pluralize for DB
-	//2.schema: what does the look like in the DB
-	//3. forceName: (optional) force the name to something other than what #1 generates as collection.
-//model is responsible for creating the collections
-//model is also responsible for getting the schema to the db and translate to actual content
 module.exports = mongoose.model('User', userSchema);

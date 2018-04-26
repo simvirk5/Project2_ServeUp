@@ -13,7 +13,7 @@ router.get('/login', function(req, res) {
 
 //Perform the login functionality 
 router.post('/login', passport.authenticate('local', {
-	successRedirect: '/profile',
+	successRedirect: '/post',
 	successFlash: 'Good work, you logged in',
 	failureRedirect: '/auth/login',
 	failureFlash: 'Invalid credentials'
@@ -48,7 +48,7 @@ User.findOne({email: req.body.email}, function(err, user) {
 				}
 				console.log('yay signed up, now lets log in!');
 				passport.authenticate('local', {
-					successRedirect: '/profile',
+					successRedirect: '/post',
 					failureFlash: 'Sucessful account creation'
 				}) (req, res, next);
 			})

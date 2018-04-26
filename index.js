@@ -9,7 +9,8 @@ var passport = require('./config/passportConfig');
 var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
-var db = require('./models/post');
+var user = require('./models/user');
+var foodItem = require('./models/foodItems');
 //Connect to the database
 mongoose.connect('mongodb://localhost/authboiler');
 
@@ -37,17 +38,26 @@ app.use(function(req, res, next) {
 	next();
 })
 
-
 //Top-level Routes
 	//define homepage
 app.get('/', function(req, res) {
 	//render tells to look at view folder
 	res.render('home');
 })
-
+//set post page
+app.get('/post', isLoggedIn, function(req, res) {
+	res.render('post');
+});
 	//setup profile route
 app.get('/profile', isLoggedIn, function(req, res) {
-	res.render('profile');
+	foodItem.find({'userId': req.user.id}, function(err, foodItems) {
+		if(err) {
+			console.log(err);
+		}
+		else{
+			res.render('profile', {foodItems})
+		}
+	})
 });
 
 app.get('/map', function(req, res) {
@@ -55,13 +65,34 @@ app.get('/map', function(req, res) {
 })
 
 // create new post
-app.post('/profile', function(req, res) {
-  var newPost = new db.create({type: req.body.type, quantity: req.body.quantity});
-  newPost.save();
-  res.json(newPost);
-  // post.push(req.body);
-  res.redirect('/profile');
+app.post('/post', function(req, res) {
+	console.log(req.body);
+	let postData = {
+		userId: req.user.id,
+		checkedItems: req.body['foodItems[]'],
+		postItems: [req.body.postItems]
+	}
+  	foodItem.create(postData, function(err) {
+	  	if(err) {
+	  		console.log(err);
+	  	}
+	  })
+  	res.send();
 });
+
+//going to the specific id of that specific user
+app.get('/profile/:id/update', function(req, res) {
+	foodItem.find({'_id': req.params.id}, function(err, foodItems) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.render('update');
+		}
+	})
+});
+
+
 
 //Include any routes from controllers
 app.use('/auth', require('./controllers/auth'));
