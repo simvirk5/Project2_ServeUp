@@ -30,80 +30,74 @@
 // 	}
 // }
 
+//google maps API function
  function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 47.751076, lng: -120.740135},
-          zoom: 7,
-          // mapTypeId: 'roadmap'
-        });
-
-        for(var i=0; i<foodBank.length;i++){
+    var map = new google.maps.Map(document.getElementById('map'), {
+    	center: {lat: 47.751076, lng: -120.740135},
+    	zoom: 7,
+      // mapTypeId: 'roadmap'
+    });
+    //loop through each marker and call addContent function
+    for(var i=0; i<foodBank.length;i++){
 		var marker = new google.maps.Marker({
-	      position: foodBank[i].coords,
-	      map: map
+	    	position: foodBank[i].coords,
+	    	map: map
 	    });
-	  	addContent(marker, foodBank[i].name);
+  		addContent(marker, foodBank[i].name);
 	}
-	//function outside of loop
 	function addContent(marker, data) {
-	  var infowindow = new google.maps.InfoWindow({
+		var infowindow = new google.maps.InfoWindow({
 	    content: data
-	  });
+		});
 	//all event listeners
-	  marker.addListener('click', function() {
-	    infowindow.open(marker.get('map'), marker);
-	    map.setZoom(2);
-		map.setCenter(marker.getPosition());
-	  });
+		marker.addListener('click', function() {
+			infowindow.open(marker.get('map'), marker);
+		    map.setZoom(2);
+			map.setCenter(marker.getPosition());
+		});
 	}
+	// Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+    	searchBox.setBounds(map.getBounds());
+    });
 
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Wrong entry. Try something different.");
-              return;
-            }
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function() {
+    	var places = searchBox.getPlaces();
+    		if (places.length == 0) {
+        	return;
+      	}
+	 	 // For each place, get the icon, name and location.
+		var bounds = new google.maps.LatLngBounds();
+		places.forEach(function(place) {
+			if (!place.geometry) {
+		      console.log("Wrong entry. Try something different.");
+		      return;
+		    }
+		    if (place.geometry.viewport) {
+		      // Only geocodes have viewport.
+		    	bounds.union(place.geometry.viewport);
+		    } 
+		    else {
+		    	bounds.extend(place.geometry.location);
+		    }
+		});
+	    	map.fitBounds(bounds);
+    });
 }
-
-
 /////////click checkboxes
 $('.form-check-input').on('click', function(e) {
 	console.log('clicked');
 	console.log(e.target)
-})
+});
 
-
-$( document ).ready(function() {
+$(document).ready(function() {
 	
 	$('#add-food-posts').on('submit', function(e) {
 		e.preventDefault();
@@ -131,7 +125,8 @@ $( document ).ready(function() {
 		});
 	});
 
-	$('#update-food-posts').on('update', function(e) {
+
+	$('#update-food-posts').on('submit', function(e) {
 		e.preventDefault();
 		let foodItems = [];
 		let postItems = $('#update-food-posts input[type=text]').val();
@@ -150,7 +145,7 @@ $( document ).ready(function() {
 		//control how we send the data to the backend
 		$.ajax({
 			method: 'PUT',
-			url: '/update',
+			url: $(this).attr('action'),
 			data: myData
 		}).done(function(data) {
 			window.location.href="/profile"

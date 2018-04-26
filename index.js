@@ -82,16 +82,39 @@ app.post('/post', function(req, res) {
 
 //going to the specific id of that specific user
 app.get('/profile/:id/update', function(req, res) {
-	foodItem.find({'_id': req.params.id}, function(err, foodItems) {
+	foodItem.find({'_id': req.params.id}, function(err, foodItem) {
 		if(err) {
 			console.log(err);
 		}
 		else {
-			res.render('update');
+			res.render('update', {foodItem});
 		}
 	})
 });
 
+app.put('/profile/:id', function(req, res) {
+		let updateData = {
+		checkedItems: req.body['foodItems[]'],
+		postItems: [req.body.postItems]
+	}
+	foodItem.findOneAndUpdate(
+		//find specific id
+		{'_id': req.params.id},
+		//$set is parameter of the findoneupdate function and tells what we want to change
+		{$set: updateData}, 
+		//return modified than original
+		{new: true},
+		//call back function
+		function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else{
+				res.send('update')
+			}
+		}
+	)
+})
 
 
 //Include any routes from controllers

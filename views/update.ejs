@@ -2,7 +2,7 @@
  --><h2> Update page </h2>
 
 <div class="form-check form-check-inline">
-	<form method= "POST" action="/update" id="update-food-posts">
+	<form method= "POST" action="/profile/<%= foodItem[0]._id %>" id="update-food-posts">
 	  <input class="form-check-input" type="checkbox" name="Rice and Pasta" value="Rice and Pasta">
 	  <label class="form-check-label" for="rice and pasta">Rice and Pasta</label>
 
@@ -34,7 +34,7 @@
 	  <label class="form-check-label" for="canned chicken">Canned chicken</label>
 
 	  <input type ="text" name="postItems" placeholder="Add additional items here">
-    	<button type="update" class="btn btn-primary">Save updates<button>
+    	<button type="submit" class="btn btn-primary">Save updates<button>
 
 	</form>
 </div>
