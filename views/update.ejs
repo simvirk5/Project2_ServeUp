@@ -1,36 +1,38 @@
-<!-- <h1>PROFILE PAGE!</h1>
- --><h2> Update page </h2>
+
+ <h2> Update page </h2>
 
 <div class="form-check form-check-inline">
 	<form method= "POST" action="/profile/<%= foodItem[0]._id %>" id="update-food-posts">
+		
 	  <input class="form-check-input" type="checkbox" name="Rice and Pasta" value="Rice and Pasta">
-	  <label class="form-check-label" for="rice and pasta">Rice and Pasta</label>
-
-	  <input class="form-check-input" type="checkbox" name="Canned Vegetables" value="Canned Vegetables">
+	  <label class="form-check-label " for="rice and pasta">Rice and Pasta</label>
+	
+	  <input id="checkbox1" class="form-check-input active" type="checkbox" name="Canned Vegetables" value="Canned Vegetables">
 	  <label class="form-check-label" for="canned vegetables">Canned Vegetables</label>
 
-	  <input class="form-check-input" type="checkbox" name="Canned fruits" value="Canned fruits">
+	  <input id="checkbox2" class="form-check-input" type="checkbox" name="Canned fruits" value="Canned fruits">
 	  <label class="form-check-label" for="canned fruits">Canned fruits</label>
 
-	  <input class="form-check-input" type="checkbox" name="Rolled oats" value="Rolled oats">
+	  <input id="checkbox3" class="form-check-input" type="checkbox" name="Rolled oats" value="Rolled oats">
 	  <label class="form-check-label" for="rolled oats">Rolled oats</label>
 
-	  <input class="form-check-input" type="checkbox" name="Peanut butter or other nut butters" value="Peanut butter or other nut butters">
+	  <input id="checkbox4" class="form-check-input" type="checkbox" name="Peanut butter or other nut butters" value="Peanut butter or other nut butters">
 	  <label class="form-check-label" for="nuts">Peanut butter or other nut butters</label>
 
-	  <input class="form-check-input" type="checkbox" name="Canned stews" value="Canned stews">
+	  <input id="checkbox5" class="form-check-input" type="checkbox" name="Canned stews" value="Canned stews">
 	  <label class="form-check-label" for="canned stews">Canned stews</label>
 
-	  <input class="form-check-input" type="checkbox" name="Cold cereal" value="Cold cereal">
+	  <input id="checkbox6" class="form-check-input" type="checkbox" name="Cold cereal" value="Cold cereal">
 	  <label class="form-check-label" for="cold cereal">Cold cereal</label>
 
-	  <input class="form-check-input" type="checkbox" name="Gluten-free foods" value="Gluten-free foods">
+	  <input id="checkbox7" class="form-check-input" type="checkbox" name="Gluten-free foods" value="Gluten-free foods">
+
 	  <label class="form-check-label" for="glutent-free foods">Gluten-free foods</label>
 
-	  <input class="form-check-input" type="checkbox" name="Canned soups" value="Canned soups">
+	  <input id="checkbox8" class="form-check-input" type="checkbox" name="Canned soups" value="Canned soups">
 	  <label class="form-check-label" for="canned soups">Canned soups</label>
 
-	  <input class="form-check-input" type="checkbox" name="Canned chicken" value="Canned chicken">
+	  <input id="checkbox9" class="form-check-input" type="checkbox" name="Canned chicken" value="Canned chicken">
 	  <label class="form-check-label" for="canned chicken">Canned chicken</label>
 
 	  <input type ="text" name="postItems" placeholder="Add additional items here">
