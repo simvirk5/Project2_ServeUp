@@ -1,21 +1,54 @@
 <!-- Dropdown Structure -->
+<style>    
+nav ul li a{
+  color: black;
+font-family: 'Poiret One', cursive;
+} 
 
+.hamburger {
+  color: black!important;
+}
+</style>
+</head>
 
-<nav class="right-align">
-  <div class="nav-wrapper white ">
-    <ul id="nav-mobile" class="left hife-on-med-and-down">
-        <li><a href="/"><i class="waves-effect waves-teal btn-flat">Home</i></a></li>
-        <% if(!currentUser) {%>
-        <li><a href="/auth/login" ><i class="waves-effect waves-teal btn-flat">Login</i></a>
-        </li>
-        <li><a href="/auth/signup" ><i class="waves-effect waves-teal btn-flat">Get Started</i></a></li>
-      <%} else {%>
-        <li><a href="/auth/logout"><i class="waves-effect waves-teal btn-flat">Log out</i></a></li>
-        <li><a href="/profile" ><i class="waves-effect waves-teal btn-flat">Profile</i></a>
-        </li>
-      <% } %>
-    </ul>
-  </p>
+<body>
+  <div class="navbar-fixed">
+    <nav class="white black-text">
+      <div class="container nav-container">
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons hamburger">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</i></a></li>
+            <% if(!currentUser) {%>
+              <li><a href="/auth/login">Login</i></a>
+              </li>
+              
+          <%} else {%>
+              <li><a href="/auth/logout">Log out</i></a></li>
+              <li><a href="/profile">Profile</i></a>
+              </li>
+          <% } %>
+          </ul>
       </div>
-    
-</nav>
+    </nav>
+  </div>
+
+<ul class="side-nav" id="mobile-demo">
+  <li><a href="/">Home</i></a></li>
+  <% if(!currentUser) {%>
+    <li><a href="/auth/login">Login</i></a>
+    </li>
+    <li><a href="/auth/signup">Get Started</i></a></li>
+<%} else {%>
+    <li><a href="/auth/logout">Log out</i></a></li>
+    <li><a href="/profile">Profile</i></a>
+    </li>
+<% } %>
+</ul>
+
+<!-- <script>
+  const sideNav= document.querySelector('.sidenav');
+  M.Sidenav.init(sideNav, {});
+</script> -->
+</body>
+

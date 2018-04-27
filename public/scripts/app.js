@@ -151,13 +151,13 @@ $(document).ready(function() {
 			window.location.href="/profile"
 		});
 	});
+
+	$('.parallax').parallax();
+    $(".button-collapse").sideNav();
 });
 
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-        
-////
+// var elem = document.querySelector('.sidenav');
+// var instance = M.Sidenav.init(elem, options);
 
 $('#checkbox1').is(':checked')
 $('#checkbox1').prop('checked', true).change() 

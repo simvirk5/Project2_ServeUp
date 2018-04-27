@@ -1,18 +1,34 @@
 <!-- <h1>PROFILE PAGE!</h1>
  --><h2> Hello, Welcome back <%= currentUser.name %>!</h2>
 
-<!--    <div>
-    <form method="POST" action='/post' id= "newAlbum">
-      <label for ="Food Description">Description</label>
-      <input type ="text" name="Description" placeholder="Food Description">
-      <label for ="Food Quantity">Food Quantity</label>
-      <input type ="text" name="Quanity" placeholder="Enter Quanity">
-      <button type="submit" class="btn btn-primary">Add Food Item<button>
+
+<!--  <form method="POST" action="/post" id="add-food-posts">
+    <p>
+      <label>
+        <input type="checkbox" class="form-check-input" name="Rice and Pasta" value="Rice and Pasta"/>
+
+        <span>Rice and Pasta</span>
+      </label>
+    </p>
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+          <label name="postItems" for="icon_prefix2">First Name</label>
+        </div>
+      </div>
     </form>
-  </div> -->
+  </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button> -->
 
 <div class="form-check form-check-inline">
 	<form method= "POST" action="/post" id="add-food-posts">
+
 	  <input class="form-check-input" type="checkbox" name="Rice and Pasta" value="Rice and Pasta">
 	  <label class="form-check-label" for="rice and pasta">Rice and Pasta</label>
 

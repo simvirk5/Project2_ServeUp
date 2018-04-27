@@ -5,9 +5,17 @@
 <head>
 	<title>Project Two</title>
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js">
-	</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	
+   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js">
+	</script> -->
+	
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway|Raleway+Dots" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:300,400" rel="stylesheet">
+
 
 	<link rel="stylesheet" type="text/css" href="/style/style.css">
 </head>
@@ -15,23 +23,10 @@
 	
 		<% include partials/header %>
 		<% include partials/alert %>
-
 		<%- body %>
-		<hr>
-		<div class="row">
-			<div class= "col-12">
-				<a href="/" class="btn btn-info">Home</a>
-				<% if(!currentUser) {%>
-				<a href="/auth/login" class="btn btn-primary">Login</a>
-				<a href="/auth/signup" class="btn btn-success">Get Started</a>
-			<%} else {%>
-				<a href="/auth/logout" class="btn btn-warning">Log out</a>
-				<a href="/profile" class="btn btn-danger">Profile</a>
-			<% } %>
-			</div>
-		</div>
-	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js">
+	</script>
 
 	<script type="text/javascript" src="/scripts/foodBank.js"></script>
 	<script type="text/javascript" src="/scripts/app.js"></script>
