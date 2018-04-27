@@ -12,7 +12,8 @@ var isLoggedIn = require('./middleware/isLoggedIn');
 var user = require('./models/user');
 var foodItem = require('./models/foodItems');
 //Connect to the database
-mongoose.connect('mongodb://localhost/authboiler');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/authboiler');
+
 
 app.use(express.static('public'))
 
