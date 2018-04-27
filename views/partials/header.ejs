@@ -1,0 +1,21 @@
+<!-- Dropdown Structure -->
+
+
+<nav class="right-align">
+  <div class="nav-wrapper white ">
+    <ul id="nav-mobile" class="left hife-on-med-and-down">
+        <li><a href="/"><i class="waves-effect waves-teal btn-flat">Home</i></a></li>
+        <% if(!currentUser) {%>
+        <li><a href="/auth/login" ><i class="waves-effect waves-teal btn-flat">Login</i></a>
+        </li>
+        <li><a href="/auth/signup" ><i class="waves-effect waves-teal btn-flat">Get Started</i></a></li>
+      <%} else {%>
+        <li><a href="/auth/logout"><i class="waves-effect waves-teal btn-flat">Log out</i></a></li>
+        <li><a href="/profile" ><i class="waves-effect waves-teal btn-flat">Profile</i></a>
+        </li>
+      <% } %>
+    </ul>
+  </p>
+      </div>
+    
+</nav>
