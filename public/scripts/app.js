@@ -151,13 +151,27 @@ $(document).ready(function() {
 			window.location.href="/profile"
 		});
 	});
+    //     $.ajax({
+    //         method: 'DELETE',
+    //         url: '/records/'+$(this).attr('action'),
+    //         success: deleteServiceSuccess,
+    //         error: deleteServiceError
+    //     }).then(()=>{
+    //         // console.log(this);
+    //         $(this).parent().remove();
+    //     });
+    
+    // function deleteServiceSuccess() {
+    //     console.log("deleted service successfully!", $(this).attr('data-id'));
+    // }
+    // function deleteServiceError() {
+    //     console.log("delete Service Error");
+    // }
 
 	$('.parallax').parallax();
     $(".button-collapse").sideNav();
-});
 
-// var elem = document.querySelector('.sidenav');
-// var instance = M.Sidenav.init(elem, options);
+});
 
 $('#checkbox1').is(':checked')
 $('#checkbox1').prop('checked', true).change() 
@@ -165,23 +179,7 @@ $('#checkbox1').prop('checked', true).change()
 $('#checkbox2').is(':checked')
 $('#checkbox2').prop('checked', true).change() 
 
-$('#checkbox3').is(':checked')
-$('#checkbox3').prop('checked', true).change() 
 
-$('#checkbox4').is(':checked')
-$('#checkbox4').prop('checked', true).change() 
 
-$('#checkbox5').is(':checked')
-$('#checkbox5').prop('checked', true).change() 
 
-$('#checkbox6').is(':checked')
-$('#checkbox6').prop('checked', true).change() 
-$('#checkbox7').is(':checked')
-$('#checkbox7').prop('checked', true).change() 
-$('#checkbox8').is(':checked')
-$('#checkbox8').prop('checked', true).change() 
-$('#checkbox9').is(':checked')
-$('#checkbox9').prop('checked', true).change() 
-$('#checkbox10').is(':checked')
-$('#checkbox10').prop('checked', true).change() 
 

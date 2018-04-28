@@ -116,7 +116,19 @@ app.put('/profile/:id', function(req, res) {
 		}
 	)
 })
+//delete function
+//front end makes the request to delete received by backend
 
+app.delete('profile/:id', function(req, res) {
+	foodItem.findByIdAndRemove(req.params.id, function(err) {
+		if(err) {
+			res.send(err);
+		}
+		else {
+			res.send();
+		}
+	})
+});
 
 //Include any routes from controllers
 app.use('/auth', require('./controllers/auth'));
