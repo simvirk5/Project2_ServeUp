@@ -125,7 +125,6 @@ $(document).ready(function() {
 		});
 	});
 
-
 	$('#update-food-posts').on('submit', function(e) {
 		e.preventDefault();
 		let foodItems = [];
@@ -150,34 +149,25 @@ $(document).ready(function() {
 		}).done(function(data) {
 			window.location.href="/profile"
 		});
+
 	});
-    //     $.ajax({
-    //         method: 'DELETE',
-    //         url: '/records/'+$(this).attr('action'),
-    //         success: deleteServiceSuccess,
-    //         error: deleteServiceError
-    //     }).then(()=>{
-    //         // console.log(this);
-    //         $(this).parent().remove();
-    //     });
-    
-    // function deleteServiceSuccess() {
-    //     console.log("deleted service successfully!", $(this).attr('data-id'));
-    // }
-    // function deleteServiceError() {
-    //     console.log("delete Service Error");
-    // }
+
+	$('.deleteButton').on('click', function(e) {
+		e.preventDefault();
+        $.ajax({
+            method: 'DELETE',
+            url: $(this).attr('href'),
+        }).then(()=>{
+        	window.location.reload()          
+        });
+     });
 
 	$('.parallax').parallax();
     $(".button-collapse").sideNav();
 
 });
 
-$('#checkbox1').is(':checked')
-$('#checkbox1').prop('checked', true).change() 
 
-$('#checkbox2').is(':checked')
-$('#checkbox2').prop('checked', true).change() 
 
 
 

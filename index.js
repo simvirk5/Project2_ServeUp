@@ -119,7 +119,7 @@ app.put('/profile/:id', function(req, res) {
 //delete function
 //front end makes the request to delete received by backend
 
-app.delete('profile/:id', function(req, res) {
+app.delete('/profile/:id', function(req, res) {
 	foodItem.findByIdAndRemove(req.params.id, function(err) {
 		if(err) {
 			res.send(err);
