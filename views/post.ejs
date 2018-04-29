@@ -1,31 +1,20 @@
-<!-- <h1>PROFILE PAGE!</h1>
- --><h2> Hello, Welcome back <%= currentUser.name %>!</h2>
+<style>
+h2 {
+text-align: center;
+font-family: 'Poiret One', cursive;
+color: #418fde;
+text-shadow: 2px 2px #418fde;
+}
+.form-check-label {
+	font-family: 'Raleway', cursive;
+	font-size: 50px;
+	align-items: center;
+}
+</style>
 
+<h2> Log donation entries here</h2>
 
-<!--  <form method="POST" action="/post" id="add-food-posts">
-    <p>
-      <label>
-        <input type="checkbox" class="form-check-input" name="Rice and Pasta" value="Rice and Pasta"/>
-
-        <span>Rice and Pasta</span>
-      </label>
-    </p>
-
-  <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-          <label name="postItems" for="icon_prefix2">First Name</label>
-        </div>
-      </div>
-    </form>
-  </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button> -->
-
+<div class= "container">
 <div class="form-check form-check-inline">
 	<form method= "POST" action="/post" id="add-food-posts">
 
@@ -63,5 +52,4 @@
     	<button type="submit" class="btn btn-primary">Add Food Item</button>
 	</form>
 </div>
-
-<div id="foodDiv"></div>
+</div>

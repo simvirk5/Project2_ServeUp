@@ -1,6 +1,8 @@
-<h1>Profile Page</h1>
+
+<!-- <h1>Profile Page</h1>
+ --><h1>Welcome <%= currentUser.name %>!<h1>
 <% foodItems.forEach(function(foodItem) {%>
-	<div style="background-color: pink; margin-bottom: 20px">
+	<div class="container" id="profile">
 		<% if(foodItem.checkedItems) {%>
 		<p><%= foodItem.createdAt.toDateString()%> </p>
 		<% foodItem.checkedItems.forEach(function(checkItem) { %>
@@ -16,7 +18,6 @@
 
 <% }) %>
 
-
-
-
+<!-- <div style="background-color: pink; margin-bottom: 20px">
+ -->
 

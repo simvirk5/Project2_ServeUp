@@ -1,37 +1,31 @@
 
 <style>
 
-/*.container {
-	width: 25%;
-	white-space: nowrap;
-	justify-content: space-around;
-}
 .card {
-    display: inline-block;
-    vertical-align: top;
-    border-radius: 15px;
-    font-family: 'Poiret One', cursive;
-    right: 50%;
-    justify-content: space-between;
-}*/
+padding: 0!important;
+margin: auto 20px;
+height: 250px;
+border-radius: 30px;
 
-.card {
-	padding: 0!important;
-	margin: auto 5px;
-	height: 350px;
 }
 
 .card-image {
-	height: 250px;
+height: 250px;
+border-radius: 15px;
 }
 
 .activator {
-	height: inherit;
+height: inherit;
+}
+.card-title {
+color: #418fde;
+text-align: center;
+
 }
 
 @media (max-width: 890px) {
-	.card {
-		height: 350px;
+.card {
+	height: 350px;
 	}
 }
 
@@ -41,29 +35,29 @@
 	}
 }
 
-body {
-background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/food.png");
-}
-
 .text {
-	margin: 0 auto;
+margin: 0 auto;
 }
 
 #form {
-	width: 50%;
-	margin: 0 auto;
+width: 75%;
+margin: 0 auto;
 }
 
 h1 {
-	margin: 0 auto;
-	font-family: 'Poiret One', cursive;
-	text-decoration: bold;
-
+margin: 0 auto;
+font-family: 'Poiret One', cursive;
+text-decoration: bold;
+text-align: center;
+color: #418fde;
+padding: 25px;
+text-shadow: 2px 2px #418fde;
 }
 
 .form-control {
-	font-size: 30px;
+font-size: 30px;
 }
+
 </style> 
 
 <h1>SIGN UP PAGE</h1>
@@ -72,81 +66,30 @@ h1 {
 		<div class = "col s12">
 		  <div class="card col s5 offset-s1">
 		    <div class="card-image waves-effect waves-block waves-light">
-		      <img class="activator" src="http://i0.wp.com/brookstuy.com/wp-content/uploads/2017/09/Pic-004-1.jpg">
-		    </div>
-		  <div class="card-content">
-		      <span class="card-title activator grey-text text-darken-4">Log your donation items<i class="material-icons right">more_vert</i></span>
-		  </div>
-		    <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">What to donate<i class="material-icons right">close</i></span>
-		      <p class="text">Food banks most often accept non-persihable food items, but perishable items in appropriate conditions are also accepted. Please contact the food bank for more info. </p>
+		      <img class="activator" 
+		      src="http://i0.wp.com/brookstuy.com/wp-content/uploads/2017/09/Pic-004-1.jpg">
+		      <span class="card-title">Log your donation items</span>
 		    </div>
 		  </div>
 		  <div class="card col s5">
 		    <div class="card-image waves-effect waves-block waves-light">
 		      <img class="activator" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/amsterdam-netherlands-map-colorful-copper-modern-minimalist-jurq-studio.jpg">
-		    </div>
-		    <div class="card-content">
-		      <span class="card-title activator grey-text text-darken-4">Find nearest food banks to you<i class="material-icons right">more_vert</i></span>
-		    </div>
-		    <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">What to donate<i class="material-icons right">close</i></span>
-		      <p class="text">Food banks most often accept non-persihable food items, but perishable items in appropriate conditions are also accepted. Please contact the food bank for more info. </p>
-		    </div>
+		      <span class="card-title">Find nearest food banks to you</span>
 		  </div>
 		</div>
 	</div>
 </div>
-
-
-
-  <!-- <div class="row center-cols center-align">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="http://i0.wp.com/brookstuy.com/wp-content/uploads/2017/09/Pic-004-1.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="http://flavorwire.files.wordpress.com/2012/04/pennsylvania-state-university.jpg">
-          <span class="card-title">Card Title</span>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
-
 <div id="form">
 <form method="POST" action="/auth/signup">
 	<div class="form-group">
-		<label>Email</label>
-		<input type ="email" name="email" class= "form-control" placeholder="Email goes here">
+		<input type ="email" name="email" class= "form-control" placeholder="Name">
 	</div>
 	<div class="form-group">
-		<label>Password</label>
-		<input type ="password" name="password" class= "form-control" placeholder="Password goes here">
+		<input type ="password" name="password" class= "form-control" placeholder="Email">
 	</div>
 	<div class="form-group">
-		<label>Name</label>
-		<input type ="text" name="name" class= "form-control" placeholder="Enter name here">
+		<input type ="text" name="name" class= "form-control" placeholder="Password">
 	</div>
-	<input type="submit" value="Sign up!" class="btn btn-success">
+	<input type="submit" value="Sign up!" class="btn btn-success button-yellow">
 </form>
 </div>
