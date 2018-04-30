@@ -23,6 +23,7 @@ function initAutocomplete() {
 		    map.setZoom(10);
 			map.setCenter(marker.getPosition());
 		});
+		//click event on button id(Add to Favorites btn)
 		google.maps.event.addListener(infowindow, 'domready', function() {
 			$('.my-food-bank').on('click', function(e) {
 				e.preventDefault();
