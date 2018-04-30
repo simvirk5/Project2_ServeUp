@@ -14,7 +14,7 @@ router.get('/login', function(req, res) {
 //Perform the login functionality 
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/post',
-	successFlash: 'You/re logged in',
+	successFlash: 'Logged in',
 	failureRedirect: '/auth/login',
 	failureFlash: 'Invalid credentials'
 }));
@@ -46,7 +46,7 @@ User.findOne({email: req.body.email}, function(err, user) {
 					req.flash('error', 'noooooo why');
 					return console.log('err', err);
 				}
-				console.log('yay signed up, now lets log in!');
+				console.log('Yay signed up, now lets log in!');
 				passport.authenticate('local', {
 					successRedirect: '/post',
 					failureFlash: 'Sucessful account creation'

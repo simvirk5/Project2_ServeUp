@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
 		required: true
 	}
 
-	});
+});
 //Make a function that checks whether a password is correct
 userSchema.methods.isAuthenticated = function(password) {
 	//compare typedinpassword(what user is typing in) versus actual password

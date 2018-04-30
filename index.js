@@ -11,9 +11,9 @@ var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn');
 var user = require('./models/user');
 var foodItem = require('./models/foodItems');
+
 //Connect to the database
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/authboiler');
-
 
 app.use(express.static('public'))
 
@@ -55,7 +55,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 		if(err) {
 			console.log(err);
 		}
-		else{
+		else {
 			res.render('profile', {foodItems})
 		}
 	})
@@ -133,5 +133,4 @@ app.delete('/profile/:id', function(req, res) {
 //Include any routes from controllers
 app.use('/auth', require('./controllers/auth'));
 
-//Lister
 app.listen(process.env.PORT || 3000);
