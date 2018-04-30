@@ -134,9 +134,4 @@ app.delete('/profile/:id', function(req, res) {
 app.use('/auth', require('./controllers/auth'));
 
 //Lister
-// app.listen(process.env.PORT || 3000);
-var server= app.listen(process.env.PORT || 3000, function ( {
-
-})
-
-module.exports = server;
+app.listen(process.env.PORT || 3000);
