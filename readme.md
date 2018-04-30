@@ -19,7 +19,7 @@ JQuery
 
 ## Routes
 
-|Method         |Route/Url          |Purpose                         |
+|Method         |Route          |Purpose                         |
 |----------------|-------------------------------|-----------------------------|
 |GET |/            |Homepage            |
 |GET          |/auth/login            |Displays login form with email and password input fields          |
@@ -32,7 +32,7 @@ JQuery
 |GET          |/profile| Displays user's database of the selected food items and food bank location
 |GET          |/profile/:id/update| Displays the info associated with the specific user
 |PUT          |/profile/:id/| Using findOneAndUpdate mongoose method to replace original array with updated array
-|DELETE          |/profile/:id/| Using findByIdandRemove mongoose method delete data from the user's database
+|DELETE          |/profile/:id/| Using findByIdAndRemove mongoose method delete data from the user's database
 
 ## API 
 
