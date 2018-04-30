@@ -23,16 +23,21 @@ JQuery
 |----------------|-------------------------------|-----------------------------|
 |GET |/            |Homepage            |
 |GET          |/auth/login            |Displays login form with email and password input fields          |
-|POST          |/auth/login| Logs user, displays google maps and food donation logs, and redirects to profile page
-|GET          |/auth/profile| User's profile page displays user's database of the selected food items and food bank location
+|POST          |/auth/login| User signed in
 |GET |/auth/signup          |Displays signup form          
 |POST          |/auth/signup           |Signup form created          |
 |GET          |/auth/logout| Redirect to homepage
+|GET          |/post| Displays food items and map
+|POST          |/post| User selects from list of food items and food bank location
+|GET          |/profile| Displays user's database of the selected food items and food bank location
+|GET          |/profile/:id/update| Displays the info associated with the specific user
+|PUT          |/profile/:id/| Using findOneAndUpdate mongoose method to replace original array with updated array
+|DELETE          |/profile/:id/| Using findByIdandRemove mongoose method delete data from the user's database
 
 ## API 
 
-https://developers.google.com/maps/
 Google Maps Javascript API
+https://developers.google.com/maps/
 
 ## Challenges
 

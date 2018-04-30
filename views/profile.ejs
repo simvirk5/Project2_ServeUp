@@ -7,7 +7,7 @@ h1 {
 	text-shadow: 2px 2px #418fde;
 }
 
-p{
+p {
 	font-size: 30px;
 	font-family: 'Poiret One', cursive;
 	color: #418fde;
@@ -16,8 +16,11 @@ p{
 
 .container {
 	border: 5px #418fde solid;
+	padding: 10px;
 }
-
+.date-div {
+font-weight: bold;
+}
 </style>
 
 <h1>Welcome <%= currentUser.name %> to your profile!</h1>
@@ -25,18 +28,17 @@ p{
 <% foodItems.forEach(function(foodItem) {%>
 	<div class="container" id="profile">
 		<% if(foodItem.checkedItems) {%>
-		<p><%= foodItem.createdAt.toDateString()%> </p>
+		<p class="date-div"><%= foodItem.createdAt.toDateString()%> </p><hr>
 		<% foodItem.checkedItems.forEach(function(checkItem) { %>
 			<p> <%=checkItem %> </p>
 		<% }) %>
 		<%}%>
 			<p><%= foodItem.postItems[0]%> </p>
+			  <p>Selected Food Bank Location: <%=foodItem.foodBankLoc%> </p>
 			  <a href="/profile/<%= foodItem._id %>/update" class="btn-floating  waves-effect icons"><i class="material-icons">mode_edit</i></a>
-
 			  <a href="/profile/<%= foodItem._id%>" class="deleteButton btn-floating waves-effect icons">
 			  <i class="material-icons">delete</i></a>
 
-			  <p>Selected Food Bank Location: <%=foodItem.foodBankLoc%> </p>
-	</div>
+	</div><br>
 <% }) %>
 

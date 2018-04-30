@@ -38,18 +38,13 @@ app.use(function(req, res, next) {
 	res.locals.alerts = req.flash();
 	next();
 })
-
-//Top-level Routes
-	//define homepage
+//define homepage
 app.get('/', function(req, res) {
 	//render tells to look at view folder
 	res.render('home');
 })
-//set post page
-app.get('/post', isLoggedIn, function(req, res) {
-	res.render('post');
-});
-	//setup profile route
+
+//setup profile route
 app.get('/profile', isLoggedIn, function(req, res) {
 	foodItem.find({'userId': req.user.id}, function(err, foodItems) {
 		if(err) {
@@ -61,10 +56,10 @@ app.get('/profile', isLoggedIn, function(req, res) {
 	})
 });
 
-app.get('/map', function(req, res) {
-	res.render('map');
-})
-
+//set post page
+app.get('/post', isLoggedIn, function(req, res) {
+	res.render('post');
+});
 // create new post
 app.post('/post', function(req, res) {
 	console.log(req.body);
@@ -81,7 +76,6 @@ app.post('/post', function(req, res) {
 	  })
   	res.send();
 });
-
 //going to the specific id of that specific user
 app.get('/profile/:id/update', function(req, res) {
 	foodItem.find({'_id': req.params.id}, function(err, foodItem) {
@@ -100,12 +94,12 @@ app.put('/profile/:id', function(req, res) {
 		postItems: [req.body.postItems],
 		foodBankLoc: req.body.foodBankLoc
 	}
-	foodItem.findOneAndUpdate(
+	foodItem.findOneAndUpdate (
 		//find specific id
 		{'_id': req.params.id},
 		//$set is parameter of the findoneupdate function and tells what we want to change
 		{$set: updateData}, 
-		//return modified than original
+		//true is set to return modidied version of the original array
 		{new: true},
 		//call back function
 		function(err) {
@@ -118,8 +112,7 @@ app.put('/profile/:id', function(req, res) {
 		}
 	)
 })
-//delete function
-//front end makes the request to delete received by backend
+//delete function- front end makes the request to delete received by backend
 app.delete('/profile/:id', function(req, res) {
 	foodItem.findByIdAndRemove(req.params.id, function(err) {
 		if(err) {
