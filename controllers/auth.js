@@ -8,7 +8,7 @@ var User = require('../models/user');
 //Render the page with the login form
 router.get('/login', function(req, res) { 
 	//will look in view and then Auth folder
-	res.render('/auth/login')
+	res.render('auth/login')
 });
 
 //Perform the login functionality 
