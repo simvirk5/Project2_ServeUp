@@ -35,7 +35,7 @@
     var map = new google.maps.Map(document.getElementById('map'), {
     	center: {lat: 47.751076, lng: -120.740135},
     	zoom: 7,
-      // mapTypeId: 'roadmap'
+      mapTypeId: 'roadmap'
     });
     //loop through each marker and call addContent function
     for(var i=0; i<foodBank.length;i++){
@@ -52,9 +52,18 @@
 	//all event listeners
 		marker.addListener('click', function() {
 			infowindow.open(marker.get('map'), marker);
-		    map.setZoom(2);
+		    map.setZoom(10);
 			map.setCenter(marker.getPosition());
 		});
+		google.maps.event.addListener(infowindow, 'domready', function() {
+			$('.my-food-bank').on('click', function(e) {
+				e.preventDefault();
+				//'this' grabs button and moves to previous element(in this case it's the <p> and its value)
+				var locationClicked = $(this).prev().text()
+				//replaces the disables with the new input value
+				$('#foodBankLoc').val(locationClicked)
+			})
+		})
 	}
 	// Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -103,6 +112,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		let foodItems = [];
 		let postItems = $('#add-food-posts input[type=text]').val();
+		let foodBankLoc = $('#foodBankLoc').val();
 		$('#add-food-posts input[type=checkbox]').each(function() {
 			console.log(this.value);
 			if(this.checked) {
@@ -113,7 +123,8 @@ $(document).ready(function() {
 		console.log(postItems)
 		let myData = {
 			foodItems: foodItems,
-			postItems: postItems
+			postItems: postItems,
+			foodBankLoc: foodBankLoc
 		}
 		//control how we send the data to the backend
 		$.ajax({
@@ -129,6 +140,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		let foodItems = [];
 		let postItems = $('#update-food-posts input[type=text]').val();
+		let foodBankLoc = $('#foodBankLoc').val();
 		$('#update-food-posts input[type=checkbox]').each(function() {
 			console.log(this.value);
 			if(this.checked) {
@@ -137,9 +149,12 @@ $(document).ready(function() {
 		})
 		console.log(foodItems)
 		console.log(postItems)
+		console.log(foodBankLoc)
 		let myData = {
 			foodItems: foodItems,
-			postItems: postItems
+			postItems: postItems,
+			foodBankLoc: foodBankLoc
+
 		}
 		//control how we send the data to the backend
 		$.ajax({

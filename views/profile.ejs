@@ -1,6 +1,27 @@
+<style>
 
-<!-- <h1>Profile Page</h1>
- --><h1>Welcome <%= currentUser.name %>!<h1>
+h1 {
+text-align: center;
+font-family: 'Poiret One', cursive;
+color: #418fde;
+text-shadow: 2px 2px #418fde;
+}
+
+p{
+font-size: 30px;
+font-family: 'Poiret One', cursive;
+color: #418fde;
+text-align: center;
+}
+
+.container {
+border: 5px #418fde solid;
+}
+
+</style>
+
+<h1>Welcome <%= currentUser.name %> to your profile!</h1>
+<p>Edit your entries here </p>
 <% foodItems.forEach(function(foodItem) {%>
 	<div class="container" id="profile">
 		<% if(foodItem.checkedItems) {%>
@@ -10,14 +31,12 @@
 		<% }) %>
 		<%}%>
 			<p><%= foodItem.postItems[0]%> </p>
-			  <a href="/profile/<%= foodItem._id %>/update" class="btn-floating  waves-effect red"><i class="material-icons">mode_edit</i></a>
+			  <a href="/profile/<%= foodItem._id %>/update" class="btn-floating  waves-effect icons"><i class="material-icons">mode_edit</i></a>
 
-			  <a href="/profile/<%= foodItem._id%>" class="deleteButton btn-floating waves-effect teal">
+			  <a href="/profile/<%= foodItem._id%>" class="deleteButton btn-floating waves-effect icons">
 			  <i class="material-icons">delete</i></a>
+
+			  <p>Selected Food Bank Location: <%=foodItem.foodBankLoc%> </p>
 	</div>
-
 <% }) %>
-
-<!-- <div style="background-color: pink; margin-bottom: 20px">
- -->
 

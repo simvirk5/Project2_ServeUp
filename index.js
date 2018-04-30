@@ -71,7 +71,8 @@ app.post('/post', function(req, res) {
 	let postData = {
 		userId: req.user.id,
 		checkedItems: req.body['foodItems[]'],
-		postItems: [req.body.postItems]
+		postItems: [req.body.postItems],
+		foodBankLoc: req.body.foodBankLoc
 	}
   	foodItem.create(postData, function(err) {
 	  	if(err) {
@@ -96,7 +97,8 @@ app.get('/profile/:id/update', function(req, res) {
 app.put('/profile/:id', function(req, res) {
 		let updateData = {
 		checkedItems: req.body['foodItems[]'],
-		postItems: [req.body.postItems]
+		postItems: [req.body.postItems],
+		foodBankLoc: req.body.foodBankLoc
 	}
 	foodItem.findOneAndUpdate(
 		//find specific id
@@ -118,7 +120,6 @@ app.put('/profile/:id', function(req, res) {
 })
 //delete function
 //front end makes the request to delete received by backend
-
 app.delete('/profile/:id', function(req, res) {
 	foodItem.findByIdAndRemove(req.params.id, function(err) {
 		if(err) {
@@ -129,9 +130,13 @@ app.delete('/profile/:id', function(req, res) {
 		}
 	})
 });
-
 //Include any routes from controllers
 app.use('/auth', require('./controllers/auth'));
 
 //Lister
-app.listen(process.env.PORT || 3000);
+// app.listen(process.env.PORT || 3000);
+var server= app.listen(process.env.PORT || 3000, function ( {
+
+})
+
+module.exports = server;

@@ -14,7 +14,7 @@ router.get('/login', function(req, res) {
 //Perform the login functionality 
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/post',
-	successFlash: 'Good work, you logged in',
+	successFlash: 'You/re logged in',
 	failureRedirect: '/auth/login',
 	failureFlash: 'Invalid credentials'
 }));
@@ -32,7 +32,7 @@ router.post('/signup', function(req, res, next) {
 User.findOne({email: req.body.email}, function(err, user) {
 		if(err) {
 			console.log('bummer what happened', err);
-			req.flash('error', 'Something went wrong! I dunno why.Check the logs');
+			req.flash('error', 'Something went wrong!');
 			res.redirect('/auth/login');
 		}
 		else if(user){
@@ -59,7 +59,7 @@ User.findOne({email: req.body.email}, function(err, user) {
 //Then it redirects to home page
 router.get('/logout', function(req, res) { 
 	req.logout();
-	req.flash('success', 'You are logged out. Bye-bye now!');
+	req.flash('success', 'You are logged out. Until next time!');
 	res.redirect('/');
 });
 

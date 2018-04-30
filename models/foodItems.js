@@ -1,4 +1,5 @@
-//reference data is allowing one user to create multiple foodItems list
+ //reference data is allowing one user to create multiple foodItems list
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema; 
 //create schema
@@ -10,9 +11,10 @@ var Schema = mongoose.Schema;
   	},
   	checkedItems: Array,
   	postItems: Array,
-  	createdAt: {type: Date, default: Date.now}
+  	createdAt: {type: Date, default: Date.now},
+    foodBankLoc: String
   });
 //create post model from schema
   var foodItem = mongoose.model('foodItem', foodItemSchema);
 //export post
-  module.exports = foodItem;
+  module.exports = foodItem;  

@@ -93,4 +93,10 @@
 background-color: #418fde;
 
 }
+.icons {
+  background-color: #f2c673
+}
+.icons:hover, .icons:focus {
+background-color: #418fde;
+
 }
